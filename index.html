@@ -14,9 +14,27 @@
 <script>
 	function init()
 	{
-		if (typeof(Storage) == 'undefined') // Check for local storage support
+		if (typeof(Storage) == 'undefined') // Check for localStorage support
 		{
 			alert("Your browser doesn't seem to support local storage.  That's a bit of a deal breaker for Proc since we won't be able to save what you've written.")
+		}
+		else // Load localStorage values if they exist
+		{
+			if (localStorage.pros)
+			{
+				document.getElementById('pros').value = localStorage.pros
+			}
+			
+			if (localStorage.cons)
+			{
+				document.getElementById('cons').value = localStorage.cons
+			}
+			
+			if (localStorage.summary)
+			{
+				document.getElementById('summary').value = localStorage.summary
+				filename()
+			}
 		}
 	}
 
@@ -37,6 +55,11 @@
 
 	function key(event)
 	{
+		// Save the typed values to localStorage
+		localStorage.pros = document.getElementById('pros').value
+		localStorage.cons = document.getElementById('cons').value
+		localStorage.summary = document.getElementById('summary').value
+
 		if (event.keyCode == 9) // Tab key
 		{
 			event.preventDefault()
