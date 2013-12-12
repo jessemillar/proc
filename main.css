@@ -6,61 +6,19 @@
 html, body {
 	padding: 0px;
 	margin: 0px;
-
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	-o-font-smoothing: antialiased;
-	font-smoothing: antialiased;
 }
 
-textarea {
-	padding: 3%;
-
-	border: none;
+input, textarea {
+	padding: 30px;
 
 	font-family: Georgia, Times;
 	font-size: 22px;
 	letter-spacing: 3px;
 	line-height: 45px;
 
+	border: none;
 	overflow: auto;
 	resize: none;
-}
-
-#summary {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 125px;
-
-	background-color: #ffffff;
-	color: #333333;
-
-	line-height: 22px;
-	text-align: center;
-	vertical-align: middle;
-
-	overflow: auto;
-	padding: none;
-
-	opacity: 0.5;
-
-	z-index: 2;
-}
-
-.label {
-	width: auto;
-	height: auto;
-
-	margin-top: -21px;
-
-	font-family: Georgia, Times;
-	font-size: 42px;
-	line-height: 42px;
-	text-align: center;
-
-	z-index: 3;
 }
 
 #pros {
@@ -78,16 +36,6 @@ textarea {
 	z-index: 1;
 }
 
-	#labelPros {
-		position: absolute;
-		left: 10px;
-		bottom: 15px;
-
-		text-align: left;
-
-		color: #cccccc;
-	}
-
 #cons {
 	position: absolute;
 	right: 0px;
@@ -103,12 +51,20 @@ textarea {
 	z-index: 1;
 }
 
-	#labelCons {
-		position: absolute;
-		right: 10px;
-		bottom: 7px;
+#summary {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 86px;
 
-		text-align: right;
+	background-color: #ffffff;
+	color: #333333;
 
-		color: #cccccc;
-	}
+	line-height: 22px;
+	text-align: center;
+
+	opacity: 0.65;
+
+	z-index: 2;
+}

@@ -4,35 +4,39 @@
 
 	<link type = "text/css" rel = "stylesheet" href = "main.css" />
 </head>
-<body onkeydown = "key(event)">
-	<textarea id = "summary" onfocus = "filename()" onkeyup = "filename()" onchange = "filename()">summary</textarea>
-	<textarea id = "pros"></textarea>
-	<textarea id = "cons"></textarea>
-
-	<div id = "labelPros" class = "label">pros</div>
-	<div id = "labelCons" class = "label">cons</div>
+<body onload = "init()" onkeydown = "key(event)">
+	<input id = "summary" type = "text" value = "pros vs cons" onkeyup = "filename()" onchange = "filename()" onmouseover = "show()" onmouseout = "hide()">
+	<textarea id = "pros" onfocus = "hide()"></textarea>
+	<textarea id = "cons" onfocus = "hide()"></textarea>
 </body>
 </html>
 
 <script>
-	function filename()
+	function init()
+	{
+		if (typeof(Storage) == 'undefined') // Check for local storage support
+		{
+			alert("Your browser doesn't seem to support local storage.  That's a bit of a deal breaker for Proc since we won't be able to save what you've written.")
+		}
+	}
+
+	function filename() // Update the title of the page based on the summary content
 	{
 		document.title = 'Proc // ' + document.getElementById('summary').value
+	}
 
-		if (document.getElementById('summary').value == 'summary')
-		{
-			document.getElementById('summary').value = ''
-			document.title = 'Proc'
-		}
+	function show()
+	{
+		document.getElementById('summary').style.bottom = 0
+	}
+
+	function hide()
+	{
+		document.getElementById('summary').style.bottom = -65
 	}
 
 	function key(event)
 	{
-		// console.log(event.keyCode)
-
-		// var lines = document.activeElement.value.split('\n') // Get all the lines and split them into an array based on where the new lines begin
-		// console.log(lines[lines.length - 1])
-
 		if (event.keyCode == 9) // Tab key
 		{
 			event.preventDefault()
