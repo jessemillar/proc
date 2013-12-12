@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>Proc</title>
+
+	<link type = "text/css" rel = "stylesheet" href = "main.css" />
+</head>
+<body onkeydown = "key(event)">
+	<textarea id = "summary" onfocus = "filename()" onkeyup = "filename()" onchange = "filename()">summary</textarea>
+	<textarea id = "pros"></textarea>
+	<textarea id = "cons"></textarea>
+
+	<div id = "labelPros" class = "label">pros</div>
+	<div id = "labelCons" class = "label">cons</div>
+</body>
+</html>
+
+<script>
+	function filename()
+	{
+		document.title = 'Proc // ' + document.getElementById('summary').value
+
+		if (document.getElementById('summary').value == 'summary')
+		{
+			document.getElementById('summary').value = ''
+			document.title = 'Proc'
+		}
+	}
+
+	function key(event)
+	{
+		// console.log(event.keyCode)
+
+		// var lines = document.activeElement.value.split('\n') // Get all the lines and split them into an array based on where the new lines begin
+		// console.log(lines[lines.length - 1])
+
+		if (event.keyCode == 9) // Tab key
+		{
+			event.preventDefault()
+
+			if (document.activeElement.id == 'pros')
+			{
+				document.getElementById('cons').focus()
+			}
+			else
+			{
+				document.getElementById('pros').focus()
+			}
+		}
+	}
+</script>
