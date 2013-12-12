@@ -1,22 +1,27 @@
 <html>
 <head>
-	<title>Proc</title>
+	<title>proc</title>
 
 	<link type = "text/css" rel = "stylesheet" href = "main.css" />
 </head>
 <body onload = "init()" onkeydown = "key(event)">
-	<input id = "summary" type = "text" value = "pros vs cons" onkeyup = "filename()" onchange = "filename()" onmouseover = "show()" onmouseout = "hide()">
-	<textarea id = "pros" onfocus = "hide()"></textarea>
-	<textarea id = "cons" onfocus = "hide()"></textarea>
+	<div id = "save" onclick = "save()">
+		<img src = "images/save.png">
+	</div>
+	<textarea id = "pros" onkeyup = "changes()" onchange = "changes()"></textarea>
+	<textarea id = "cons" onkeyup = "changes()" onchange = "changes()"></textarea>
+	<input id = "summary" type = "text" value = "pros vs cons" onkeyup = "filename()" onchange = "filename()">
 </body>
 </html>
 
 <script>
+	var changed = false
+
 	function init()
 	{
 		if (typeof(Storage) == 'undefined') // Check for localStorage support
 		{
-			alert("Your browser doesn't seem to support local storage.  That's a bit of a deal breaker for Proc since we won't be able to save what you've written.")
+			alert("Your browser doesn't seem to support local storage.  That's a bit of a deal breaker for proc since we won't be able to save what you've written.")
 		}
 		else // Load localStorage values if they exist
 		{
@@ -35,30 +40,52 @@
 				document.getElementById('summary').value = localStorage.summary
 				filename()
 			}
+			else
+			{
+				filename()
+			}
 		}
+	}
+
+	function changes()
+	{
+		changed = true
+		filename()
+	}
+
+	function save() // Save the typed values to localStorage
+	{
+		localStorage.pros = document.getElementById('pros').value
+		localStorage.cons = document.getElementById('cons').value
+		localStorage.summary = document.getElementById('summary').value
+
+		changed = false
+		filename()
+
+		document.getElementById('save').style.opacity = 1
+
+		setTimeout(function() {
+			document.getElementById('save').style.opacity = 0.5
+		}, 500);
 	}
 
 	function filename() // Update the title of the page based on the summary content
 	{
-		document.title = 'Proc // ' + document.getElementById('summary').value
-	}
-
-	function show()
-	{
-		document.getElementById('summary').style.bottom = 0
-	}
-
-	function hide()
-	{
-		document.getElementById('summary').style.bottom = -65
+		if (changed)
+		{
+			document.title = '* proc // ' + document.getElementById('summary').value
+		}
+		else
+		{
+			document.title = 'proc // ' + document.getElementById('summary').value
+		}
 	}
 
 	function key(event)
 	{
-		// Save the typed values to localStorage
-		localStorage.pros = document.getElementById('pros').value
-		localStorage.cons = document.getElementById('cons').value
-		localStorage.summary = document.getElementById('summary').value
+		var modifier = false
+
+		console.log(event.keyCode)
 
 		if (event.keyCode == 9) // Tab key
 		{
@@ -72,6 +99,17 @@
 			{
 				document.getElementById('pros').focus()
 			}
+		}
+		
+		if (event.keyCode == 91)
+		{
+			modifier = true
+		} 
+
+		if (modifier == true && event.keyCode == 83) // Command and "S" at the same time
+		{
+			event.preventDefault()
+			save()
 		}
 	}
 </script>
