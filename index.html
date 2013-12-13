@@ -73,7 +73,7 @@
 	{
 		if (changed)
 		{
-			document.title = '* proc // ' + document.getElementById('summary').value
+			document.title = '*proc // ' + document.getElementById('summary').value
 		}
 		else
 		{
@@ -83,10 +83,6 @@
 
 	function key(event)
 	{
-		var modifier = false
-
-		console.log(event.keyCode)
-
 		if (event.keyCode == 9) // Tab key
 		{
 			event.preventDefault()
@@ -99,17 +95,6 @@
 			{
 				document.getElementById('pros').focus()
 			}
-		}
-		
-		if (event.keyCode == 91)
-		{
-			modifier = true
-		} 
-
-		if (modifier == true && event.keyCode == 83) // Command and "S" at the same time
-		{
-			event.preventDefault()
-			save()
 		}
 	}
 </script>
