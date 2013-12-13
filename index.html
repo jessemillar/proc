@@ -21,6 +21,11 @@
 
 	function init()
 	{
+		if (navigator.userAgent == 'iPhone' || navigator.userAgent == 'iPad' || navigator.userAgent == 'iPod')
+		{
+			alert("Proc isn't designed to function on iOS devices, but it might work anyway.  Give it a shot if you dare!")
+		}
+
 		if (typeof(Storage) == 'undefined') // Check for localStorage support
 		{
 			alert("Your browser doesn't seem to support local storage.  That's a bit of a deal breaker for proc since we won't be able to save what you've written.")
