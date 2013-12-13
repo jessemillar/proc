@@ -13,6 +13,9 @@ input, textarea {
 	font-size: 22px;
 	letter-spacing: 3px;
 
+	padding: 0px;
+	margin: 0px;
+
 	border: none;
     overflow: auto;
     outline: none;
