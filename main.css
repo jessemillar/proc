@@ -6,6 +6,8 @@
 html, body {
 	padding: 0px;
 	margin: 0px;
+    border-radius: 0;
+    -webkit-appearance: none;
 }
 
 input, textarea {
@@ -15,6 +17,8 @@ input, textarea {
 
 	padding: 0px;
 	margin: 0px;
+    border-radius: 0;
+    -webkit-appearance: none;
 
 	border: none;
     overflow: auto;
