@@ -9,16 +9,18 @@ html, body {
 }
 
 input, textarea {
-	padding: 30px;
-
 	font-family: Georgia, Times;
 	font-size: 22px;
 	letter-spacing: 3px;
-	line-height: 45px;
 
 	border: none;
-	overflow: auto;
-	resize: none;
+    overflow: auto;
+    outline: none;
+    resize: none;
+
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
 }
 
 #save {
@@ -40,9 +42,12 @@ input, textarea {
 	width: 50%;
 	height: 90%;
 
+	padding: 30px;
+
 	background-color: #8cbeb2;
 	color: #ffffff;
 
+	line-height: 45px;
 	text-align: right;
 
 	z-index: 1;
@@ -55,9 +60,12 @@ input, textarea {
 	width: 50%;
 	height: 90%;
 
+	padding: 30px;
+
 	background-color: #ef6060;
 	color: #ffffff;
 
+	line-height: 45px;
 	text-align: left;
 
 	z-index: 1;
@@ -73,7 +81,6 @@ input, textarea {
 	background-color: #5c4b51;
 	color: #f2ebbf;
 
-	line-height: 22px;
 	text-align: center;
 
 	z-index: 2;
