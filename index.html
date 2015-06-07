@@ -1,107 +1,90 @@
 <html>
+
 <head>
-	<title>proc</title>
-
-	<script src="/mint/?js" type="text/javascript"></script>
-
-	<link type = "text/css" rel = "stylesheet" href = "main.css" />
+    <title>proc</title>
+    <link type="text/css" rel="stylesheet" href="main.css" />
 </head>
-<body onload = "init()" onkeydown = "key(event)">
-	<div id = "save" onclick = "save()">
-		<img src = "images/save.png">
-	</div>
-	<textarea id = "pros" onkeyup = "changes()" onchange = "changes()"></textarea>
-	<textarea id = "cons" onkeyup = "changes()" onchange = "changes()"></textarea>
-	<input id = "summary" type = "text" value = "pros vs cons" onkeyup = "filename()" onchange = "filename()">
+
+<body onload="init()" onkeydown="key(event)">
+    <div id="save" onclick="save()">
+        <img src="images/save.png">
+    </div>
+    <textarea id="pros" onkeyup="changes()" onchange="changes()"></textarea>
+    <textarea id="cons" onkeyup="changes()" onchange="changes()"></textarea>
+    <input id="summary" type="text" value="pros vs cons" onkeyup="filename()" onchange="filename()">
 </body>
+
 </html>
-
 <script>
-	var changed = false
+var changed = false;
 
-	function init()
-	{
-		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false)
-		{
-			alert("Proc isn't designed to function on iOS devices, but it might work anyway.  Give it a shot if you dare!")
-		}
+function init() {
+    if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false) {
+        alert("Proc isn't designed to function on iOS devices, but it might work anyway.  Give it a shot if you dare!");
+    }
 
-		if (typeof(Storage) == 'undefined') // Check for localStorage support
-		{
-			alert("Your browser doesn't seem to support local storage.  That's a bit of a deal breaker for proc since we won't be able to save what you've written.")
-		}
-		else // Load localStorage values if they exist
-		{
-			if (localStorage.pros)
-			{
-				document.getElementById('pros').value = localStorage.pros
-			}
-			
-			if (localStorage.cons)
-			{
-				document.getElementById('cons').value = localStorage.cons
-			}
-			
-			if (localStorage.summary)
-			{
-				document.getElementById('summary').value = localStorage.summary
-				filename()
-			}
-			else
-			{
-				filename()
-			}
-		}
-	}
+    if (typeof(Storage) == 'undefined') // Check for localStorage support
+    {
+        alert("Your browser doesn't seem to support local storage.  That's a bit of a deal breaker for proc since we won't be able to save what you've written.");
+    } else // Load localStorage values if they exist
+    {
+        if (localStorage.pros) {
+            document.getElementById('pros').value = localStorage.pros;
+        }
 
-	function changes()
-	{
-		changed = true
-		filename()
-	}
+        if (localStorage.cons) {
+            document.getElementById('cons').value = localStorage.cons;
+        }
 
-	function save() // Save the typed values to localStorage
-	{
-		localStorage.pros = document.getElementById('pros').value
-		localStorage.cons = document.getElementById('cons').value
-		localStorage.summary = document.getElementById('summary').value
+        if (localStorage.summary) {
+            document.getElementById('summary').value = localStorage.summary;
+            filename();
+        } else {
+            filename();
+        }
+    }
+}
 
-		changed = false
-		filename()
+function changes() {
+    changed = true;
+    filename();
+}
 
-		document.getElementById('save').style.opacity = 1
+function save() // Save the typed values to localStorage
+    {
+        localStorage.pros = document.getElementById('pros').value;
+        localStorage.cons = document.getElementById('cons').value;
+        localStorage.summary = document.getElementById('summary').value;
 
-		setTimeout(function() {
-			document.getElementById('save').style.opacity = 0.5
-		}, 500);
-	}
+        changed = false;
+        filename();
 
-	function filename() // Update the title of the page based on the summary content
-	{
-		if (changed)
-		{
-			document.title = '*proc // ' + document.getElementById('summary').value
-		}
-		else
-		{
-			document.title = 'proc // ' + document.getElementById('summary').value
-		}
-	}
+        document.getElementById('save').style.opacity = 1;
 
-	function key(event)
-	{
-		if (event.keyCode == 9) // Tab key
-		{
-			event.preventDefault()
+        setTimeout(function() {
+            document.getElementById('save').style.opacity = 0.5;
+        }, 500);
+    }
 
-			if (document.activeElement.id == 'pros')
-			{
-				document.getElementById('cons').focus()
-			}
-			else
-			{
-				document.getElementById('pros').focus()
-			}
-		}
-	}
+function filename() // Update the title of the page based on the summary content
+    {
+        if (changed) {
+            document.title = '*proc // ' + document.getElementById('summary').value;
+        } else {
+            document.title = 'proc // ' + document.getElementById('summary').value;
+        }
+    }
+
+function key(event) {
+    if (event.keyCode == 9) // Tab key
+    {
+        event.preventDefault();
+
+        if (document.activeElement.id == 'pros') {
+            document.getElementById('cons').focus();
+        } else {
+            document.getElementById('pros').focus();
+        }
+    }
+}
 </script>

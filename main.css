@@ -1,94 +1,79 @@
 *:focus {
-	border: none;
+    border: none;
     outline: none;
 }
 
-html, body {
-	padding: 0px;
-	margin: 0px;
+html,
+body {
+    padding: 0;
+    margin: 0;
     border-radius: 0;
     -webkit-appearance: none;
 }
 
-input, textarea {
-	font-family: Georgia, Times;
-	font-size: 22px;
-	letter-spacing: 3px;
-
-	padding: 0px;
-	margin: 0px;
+input,
+textarea {
+    font-family: Georgia, Times;
+    font-size: 22px;
+    letter-spacing: 3px;
+    padding: 0;
+    margin: 0;
     border-radius: 0;
     -webkit-appearance: none;
-
-	border: none;
+    border: none;
     overflow: auto;
     outline: none;
     resize: none;
-
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
 }
 
 #save {
-	position: absolute;
-	left: 15px;
-	top: 15px;
-
-	opacity: 0.5;
-
-	cursor: pointer;
-
-	z-index: 2;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    opacity: 0.5;
+    cursor: pointer;
+    z-index: 2;
 }
 
 #pros {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 50%;
-	height: 90%;
-
-	padding: 30px;
-
-	background-color: #8cbeb2;
-	color: #ffffff;
-
-	line-height: 45px;
-	text-align: right;
-
-	z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 90%;
+    padding: 30;
+    background-color: #8cbeb2;
+    color: #ffffff;
+    line-height: 45px;
+    text-align: right;
+    z-index: 1;
 }
 
 #cons {
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	width: 50%;
-	height: 90%;
-
-	padding: 30px;
-
-	background-color: #ef6060;
-	color: #ffffff;
-
-	line-height: 45px;
-	text-align: left;
-
-	z-index: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 90%;
+    padding: 30;
+    background-color: #ef6060;
+    color: #ffffff;
+    line-height: 45px;
+    text-align: left;
+    z-index: 1;
 }
 
 #summary {
-	position: absolute;
-	left: 0px;
-	bottom: 0px;
-	width: 100%;
-	height: 10%;
-
-	background-color: #5c4b51;
-	color: #f2ebbf;
-
-	text-align: center;
-
-	z-index: 2;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    background-color: #5c4b51;
+    color: #f2ebbf;
+    text-align: center;
+    z-index: 2;
 }
